@@ -1,0 +1,13 @@
+{
+  "author": "nukomeet",
+  "name": "kokpit",
+  "version": "0.0.1",
+  "dependencies": {
+  	"express": "3.1.0",
+    "faker2": "latest"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
