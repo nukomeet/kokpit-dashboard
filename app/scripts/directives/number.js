@@ -9,7 +9,13 @@ angularjsSseApp.directive('number', ["Widgets", "$filter", function(Widgets, $fi
     },
     templateUrl: "views/widgets/number.html",
     link: function(scope, element, attrs, controller ){
+
+      scope.updatedAtMessage = function(){
+        return new Date();
+      }
+
       Widgets.add(attrs.name, scope);
+
       var color = $filter('color');
       element.parent('li').addClass(color).addClass('color');
     }
