@@ -1,3 +1,7 @@
 <h1 class="title">{{title}}</h1>
 
-<h2 class="value">{{ data.value }}</h2>
+<h2 class="value">{{ value || 0 }}</h2>
+
+<p class="more-info">{{ moreinfo }}</p>
+
+<p class="updated-at">{{ updatedAtMessage() | fromNow }}</p>

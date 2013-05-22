@@ -8,7 +8,8 @@ angularjsSseApp.factory('Widgets', [ function() {
     },
 
     receiveData: function(id, data) {
-      this.collection[id].data = data;
+      var widget = this.collection[id];
+      angular.extend(widget, data);
     }
   };
 }]);

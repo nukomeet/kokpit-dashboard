@@ -1,3 +1,7 @@
 <h1 class="title">{{title}}</h1>
 
-<input type="text" class="knob" data-min="{{min}}" data-readOnly=true data-max="{{max}}" value="{{data.value}}">
+<input type="text" class="knob" data-min="{{min}}" data-readOnly=true data-max="{{max}}" value="{{value}}">
+
+<p class="more-info">{{ moreinfo }}</p>
+
+<p class="updated-at">{{ updatedAtMessage() | fromNow }}</p>
