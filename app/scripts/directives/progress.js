@@ -6,7 +6,8 @@ angularjsSseApp.directive('progress', ["Widgets", '$filter', function(Widgets, $
       name: "@",
       title: "@",
       min: "@",
-      max: "@"
+      max: "@",
+      moreinfo: "@"
     },
     templateUrl: "views/widgets/progress.html",
     compile: function(element, attr){

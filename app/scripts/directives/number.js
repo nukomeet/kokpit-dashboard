@@ -4,7 +4,8 @@ angularjsSseApp.directive('number', ["Widgets", "$filter", function(Widgets, $fi
 		restrict: 'A',
 		scope: {
       name: "@",
-      title: "@"
+      title: "@",
+      moreinfo: "@"
     },
     templateUrl: "views/widgets/number.html",
     link: function(scope, element, attrs, controller ){
