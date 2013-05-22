@@ -3,7 +3,7 @@
 describe('Service: EventSource', function () {
 
   // load the service's module
-  beforeEach(module('angularjsSseApp'));
+  beforeEach(module('kokpitApp'));
 
   // instantiate service
   var EventSource;
