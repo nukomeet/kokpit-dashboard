@@ -1,4 +1,4 @@
-angularjsSseApp.directive('number', ["Widgets", "$filter", function(Widgets, $filter) {
+kokpitApp.directive('number', ["Widgets", "$filter", function(Widgets, $filter) {
 
 	return {
 		restrict: 'A',

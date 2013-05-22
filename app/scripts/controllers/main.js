@@ -1,6 +1,6 @@
 'use strict';
 
-angularjsSseApp.controller('MainCtrl', ["$scope", "EventSource", "Widgets", function($scope, EventSource, Widgets) {
+kokpitApp.controller('MainCtrl', ["$scope", "EventSource", "Widgets", function($scope, EventSource, Widgets) {
 
   var handleCallback = function (msg) {
     $scope.$apply(function () {

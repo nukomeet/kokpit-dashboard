@@ -1,4 +1,4 @@
-angularjsSseApp.directive('progress', ["Widgets", '$filter', function(Widgets, $filter) {
+kokpitApp.directive('progress', ["Widgets", '$filter', function(Widgets, $filter) {
 
   return {
     restrict: 'A',

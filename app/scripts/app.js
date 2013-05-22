@@ -1,6 +1,6 @@
 'use strict';
 
-var angularjsSseApp = angular.module('angularjsSseApp', [])
+var kokpitApp = angular.module('kokpitApp', [])
 
 $(function(){ //DOM Ready
   $(".gridster ul").gridster({

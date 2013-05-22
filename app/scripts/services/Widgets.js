@@ -1,4 +1,4 @@
-angularjsSseApp.factory('Widgets', [ function() {
+kokpitApp.factory('Widgets', [ function() {
   return {
 
     collection: {},
