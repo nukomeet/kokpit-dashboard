@@ -1,4 +1,4 @@
-kokpitApp.directive('progress', ["Widgets", '$filter', function(Widgets, $filter) {
+kokpitApp.directive('progress', ["Widgets", function(Widgets) {
 
   return {
     restrict: 'A',
@@ -26,8 +26,6 @@ kokpitApp.directive('progress', ["Widgets", '$filter', function(Widgets, $filter
           Widgets.add(attrs.name, scope);
         },
         post: function(scope, element, attrs, controller ){
-          var color = $filter('color');
-          element.parent('li').addClass(color).addClass('color');
           scope.$watch('value', function(value){
             if(value){
               $('.knob').val(value).trigger('change');

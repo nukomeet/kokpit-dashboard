@@ -1,4 +1,4 @@
-kokpitApp.directive('number', ["Widgets", "$filter", function(Widgets, $filter) {
+kokpitApp.directive('number', ["Widgets", function(Widgets) {
 
 	return {
 		restrict: 'A',
@@ -15,9 +15,6 @@ kokpitApp.directive('number', ["Widgets", "$filter", function(Widgets, $filter) 
       }
 
       Widgets.add(attrs.name, scope);
-
-      var color = $filter('color');
-      element.parent('li').addClass(color).addClass('color');
     }
   }
 }]);
