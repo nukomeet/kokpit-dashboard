@@ -19,10 +19,6 @@ kokpitApp.directive('progress', ["Widgets", function(Widgets) {
         });
       return {
         pre: function(scope, element, attrs, controller){
-          scope.updatedAtMessage = function(){
-            return new Date();
-          }
-
           Widgets.add(attrs.name, scope);
         },
         post: function(scope, element, attrs, controller ){
