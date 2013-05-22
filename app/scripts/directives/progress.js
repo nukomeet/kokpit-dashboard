@@ -6,7 +6,8 @@ angularjsSseApp.directive('progress', ["Widgets", '$filter', function(Widgets, $
       name: "@",
       title: "@",
       min: "@",
-      max: "@"
+      max: "@",
+      moreinfo: "@"
     },
     templateUrl: "views/widgets/progress.html",
     compile: function(element, attr){
@@ -18,14 +19,18 @@ angularjsSseApp.directive('progress', ["Widgets", '$filter', function(Widgets, $
         });
       return {
         pre: function(scope, element, attrs, controller){
+          scope.updatedAtMessage = function(){
+            return new Date();
+          }
+
           Widgets.add(attrs.name, scope);
         },
         post: function(scope, element, attrs, controller ){
           var color = $filter('color');
           element.parent('li').addClass(color).addClass('color');
-          scope.$watch('data', function(data){
-            if(data && data.value){
-              $('.knob').val(data.value).trigger('change');
+          scope.$watch('value', function(value){
+            if(value){
+              $('.knob').val(value).trigger('change');
             }
           })
         }

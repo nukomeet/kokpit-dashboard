@@ -12,6 +12,7 @@ body{
 
 .widget h2 {
   font-size: 78px;
+  margin: 0px;
 }
 
 .color.zeroclipboard-is-hover,.color:hover{opacity:0.8;}.color.zeroclipboard-is-hover header,.color:hover header{display:block;}
