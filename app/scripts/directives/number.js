@@ -8,7 +8,6 @@ kokpitApp.directive('number', ["Widgets", function(Widgets) {
     },
     templateUrl: "views/widgets/number.html",
     link: function(scope, element, attrs, controller ){
-      Widgets.add(attrs.name, scope);
     }
   }
 }]);

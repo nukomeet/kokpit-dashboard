@@ -18,9 +18,6 @@ kokpitApp.directive('progress', ["Widgets", function(Widgets) {
           max: attr.max
         });
       return {
-        pre: function(scope, element, attrs, controller){
-          Widgets.add(attrs.name, scope);
-        },
         post: function(scope, element, attrs, controller ){
           scope.$watch('value', function(value){
             if(value){
