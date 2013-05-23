@@ -9,6 +9,10 @@ kokpitApp.directive('progress', ["Widgets", function(Widgets) {
       max: "@",
       moreinfo: "@"
     },
+    controller: function($scope){
+      $scope.$on("data", function(scope, data){
+      })
+    },
     templateUrl: "views/widgets/progress.html",
     compile: function(element, attr){
 

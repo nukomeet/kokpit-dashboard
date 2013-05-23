@@ -10,6 +10,8 @@ kokpitApp.factory('Widgets', [ function() {
     receiveData: function(id, data) {
       var widget = this.collection[id];
       angular.extend(widget, data);
+
+      widget.$broadcast("data", data);
     }
   };
 }]);
