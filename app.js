@@ -97,7 +97,7 @@ function createMsg(room) {
     msg = {};
     msg.id = room;
     msg.value = Math.floor((Math.random()*100)+1);
-    msg.created_at = new Date();
+    msg.updateAt = new Date();
     return JSON.stringify(msg);
 }
 

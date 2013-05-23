@@ -9,6 +9,10 @@ kokpitApp.directive('progress', ["Widgets", function(Widgets) {
       max: "@",
       moreinfo: "@"
     },
+    controller: function($scope){
+      $scope.$on("data", function(scope, data){
+      })
+    },
     templateUrl: "views/widgets/progress.html",
     compile: function(element, attr){
 
@@ -18,13 +22,6 @@ kokpitApp.directive('progress', ["Widgets", function(Widgets) {
           max: attr.max
         });
       return {
-        pre: function(scope, element, attrs, controller){
-          scope.updatedAtMessage = function(){
-            return new Date();
-          }
-
-          Widgets.add(attrs.name, scope);
-        },
         post: function(scope, element, attrs, controller ){
           scope.$watch('value', function(value){
             if(value){
