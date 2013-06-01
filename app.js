@@ -55,27 +55,24 @@ app.get('/sse', function(req, res) {
     });
 });
 
-app.post('/widget/:name', function(req, res) {
+app.post('/widgets/:name', function(req, res) {
     // we walk through each connection
     openConnections.forEach(function(resp) {
         var d = new Date();
 
-        var widgetName = req.params.name
-        console.log(widgetName);
-
         resp.write('event: ' + 'message' + '\n');
         resp.write('id: ' + d.getMilliseconds() + '\n');
-        resp.write('data:' + createMsg(widgetName) +   '\n\n'); // Note the extra newline
+        resp.write('data:' + createMsg(req.params.name, req.body) +   '\n\n'); // Note the extra newline
     });
 
     res.send(200);
 });
 
-function createMsg(name) {
+function createMsg(name, data) {
     msg = {};
 
     msg.id = name;
-    msg.value = Math.floor((Math.random()*100)+1);
+    msg.value = data.value
     msg.updatedAt = new Date();
 
     return JSON.stringify(msg);
