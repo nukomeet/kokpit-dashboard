@@ -1,5 +1,6 @@
 require 'clockwork'
 require 'sidekiq'
+require 'json'
 
 Dir["workers/*"].each { |f| load f }
 

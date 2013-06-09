@@ -21,14 +21,11 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-var openConnections = [];
+var subscribers = [];
 
 app.get('/sse', function(req, res) {
-
-    // set timeout as high as possibleg
     req.socket.setTimeout(Infinity);
 
-    // headers for event-stream connection
     res.writeHead(200, {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
@@ -36,33 +33,30 @@ app.get('/sse', function(req, res) {
     });
     res.write('\n');
 
-    // push this res object to our global variable
-    openConnections.push(res);
+    subscribers.push(res);
 
-    // When the request is closed, e.g. the browser window
-    // is closed. We search through the open connections
-    // array and remove this connection.
+    // Remove a connection when it is closed.
     req.on("close", function() {
         var toRemove;
-        for (var j =0 ; j < openConnections.length ; j++) {
-            if (openConnections[j] == res) {
-                toRemove =j;
+        for (var j =0 ; j < subscribers.length ; j++) {
+            if (subscribers[j] == res) {
+                toRemove = j;
                 break;
             }
         }
-        openConnections.splice(j,1);
-        console.log(openConnections.length);
+        subscribers.splice(j,1);
     });
 });
 
 app.post('/widgets/:name', function(req, res) {
     // we walk through each connection
-    openConnections.forEach(function(resp) {
+    subscribers.forEach(function(subscriber) {
         var d = new Date();
 
-        resp.write('event: ' + 'message' + '\n');
-        resp.write('id: ' + d.getMilliseconds() + '\n');
-        resp.write('data:' + createMsg(req.params.name, req.body) +   '\n\n'); // Note the extra newline
+        subscriber.write('event: ' + 'message' + '\n');
+        subscriber.write('id: ' + d.getMilliseconds() + '\n');
+        subscriber.write('data:' + createMsg(req.params.name, req.body));
+        subscriber.write('\n\n');
     });
 
     res.send(200);
