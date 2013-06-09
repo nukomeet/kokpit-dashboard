@@ -1,11 +1,11 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    celluloid (0.14.0)
+    celluloid (0.14.1)
       timers (>= 1.0.0)
     clockwork (0.5.1)
       tzinfo (~> 0.3.35)
-    connection_pool (1.0.0)
+    connection_pool (1.1.0)
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -15,8 +15,8 @@ GEM
     redis (3.0.4)
     redis-namespace (1.3.0)
       redis (~> 3.0.0)
-    sidekiq (2.12.0)
-      celluloid (>= 0.14.0)
+    sidekiq (2.12.1)
+      celluloid (>= 0.14.1)
       connection_pool (>= 1.0.0)
       json
       redis (>= 3.0)
