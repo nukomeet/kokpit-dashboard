@@ -6,15 +6,26 @@ A simple dashboard framework written in AngularJS.
 
 ## How to Use
 
-It is a basic NodeJS application. Run it as:
-
 ```
-node app.js
+git clone https://github.com/nukomeet/kokpit
 ```
 
-Access it at `localhost:3030`.
+```
+cd kokpit
+bundle
+```
+
+Run it as:
+
+```
+foreman start
+```
+
+Web application will be accessible at `localhost:5000`.
 
 
-## Backend (WIP)
+## Backend
 
-Workers use Sidekiq. It is not actived by default.
+Workers use Sidekiq. Add your worker to `workers/` directory and define its
+frequency in `clock.rb`.
+
