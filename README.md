@@ -24,7 +24,7 @@ Web application will be accessible at `localhost:5000`.
 
 ## Requirements
 
-You need NodeJS and Redis running and up.
+You need Ruby 1.9.3, NodeJS and Redis running and up.
 
 ## Backend
 
