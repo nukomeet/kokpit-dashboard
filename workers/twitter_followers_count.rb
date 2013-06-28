@@ -12,10 +12,10 @@ class TwitterFollowersCount
 
   def perform()
     name = URI::encode(PARAMS[:handle])
-    response = HTTParty.get("http://api.twitter.com/1/users/lookup.json?screen_name=#{name}")
+    response = HTTParty.get("https://twitter.com/users/#{name}.json")
 
     if response.code == 200
-      count = JSON.parse(response.body)[0]['followers_count']
+      count = JSON.parse(response.body)['followers_count']
     else
       count = 0
     end
