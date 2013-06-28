@@ -12,6 +12,7 @@ git clone https://github.com/nukomeet/kokpit
 ```
 cd kokpit
 bundle
+npm install
 ```
 
 Run it as:
