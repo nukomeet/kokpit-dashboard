@@ -3,7 +3,6 @@ Kokpit
 
 A simple dashboard framework written in AngularJS.
 
-
 ## How to Use
 
 ```
@@ -23,6 +22,9 @@ foreman start
 
 Web application will be accessible at `localhost:5000`.
 
+## Requirements
+
+You need NodeJS and Redis running and up.
 
 ## Backend
 
