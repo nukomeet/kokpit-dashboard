@@ -2,15 +2,11 @@ require 'clockwork'
 require 'sidekiq'
 require 'json'
 
+require './app'
+
 Dir["workers/*"].each { |f| load f }
 
-module Clockwork
-  # with Sidekiq (recommended)
-  # handler { |worker| Object.const_get(worker).perform_async() }
-
-  # Heroku compatible (never do it in production)
-  handler { |worker| Object.const_get(worker).new.perform() }
-
-  every(30.seconds, 'TwitterFollowersCount')
-  every(5.seconds, 'Ping')
-end
+every(1.minute, TwitterFollowersCount, { id: "twitter-nukomeet", handle: "nukomeet" })
+every(1.minute, TwitterFollowersCount, { id: "twitter-rupy", handle: "rupy" })
+every(1.minute, FacebookLikes, { id: "fb-rupy", page_name: "rupy.conference" })
+every(5.seconds, Ping, { id: "ping" })
