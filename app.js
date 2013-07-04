@@ -1,10 +1,19 @@
 var express = require('express')
   , http = require('http')
   , os = require('os')
+  , url = require('url')
   , path = require('path')
-  , Faker = require('faker2');
+  , Faker = require('faker2')
+  , redis = require('redis');
 
 var app = express();
+
+var redisURL = url.parse(process.env.REDISCLOUD_URL || "redis://localhost:6379");
+var redisClient = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+
+if (redisURL.auth != undefined) {
+  redisClient.auth(redisURL.auth.split(":")[1]);
+}
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3030);
@@ -71,6 +80,21 @@ function createMsg(name, data) {
 
     return JSON.stringify(msg);
 }
+
+redisClient.on('ready', function() {
+  redisClient.subscribe('aerodrome');
+});
+
+redisClient.on("message", function(channel, message){
+  subscribers.forEach(function(subscriber) {
+      var d = new Date();
+
+      subscriber.write('event: ' + 'message' + '\n');
+      subscriber.write('id: ' + d.getMilliseconds() + '\n');
+      subscriber.write('data:' + message);
+      subscriber.write('\n\n');
+  });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
